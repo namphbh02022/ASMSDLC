@@ -1,0 +1,841 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FoodX Delivery</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="products.js"></script>
+</head>
+
+<body>
+  <header>
+    <div class="container header-flex">
+      <img src="logo-grabfood2.svg" alt="Logo" class="logo">
+      <div class="delivery-address">
+        <span>Deliver to:</span>
+        <input type="text" placeholder="Enter your address..." />
+        <button class="address-btn">Update</button>
+      </div>
+      <nav>
+        <ul>
+          <li><a href="#" id="login-menu">Log in</a></li>
+          <li><a href="#" id="register-menu">Register</a></li>
+          <li><a href="#food-list">Home</a></li>
+          <li><a href="#" id="orders-link">Orders</a></li>
+          <li><a href="#" id="cart-link">Shopping Cart <span class="cart-count">0</span></a></li>
+          <li class="user-menu" style="display: none;">
+            <div class="user-avatar">
+              <img src="https://cdn-icons-png.flaticon.com/512/149/149071.png" alt="User Avatar" class="avatar-img">
+              <span class="username">User</span>
+            </div>
+            <a href="#" id="logout-menu">Logout</a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+    <div class="search-bar">
+      <input type="text" placeholder="Find food....">
+      <button>Search</button>
+    </div>
+  </header>
+  <main>
+    <section class="slider-banner">
+      <div class="slider">
+        <img src="https://inan2h.vn/wp-content/uploads/2022/12/in-banner-quang-cao-do-an-6-1.jpg" alt="Banner 1">
+        <img
+          src="https://img.freepik.com/premium-psd/food-menu-restaurant-facebook-cover-banner-template_120329-4873.jpg?semt=ais_hybrid"
+          alt="Banner 2">
+        <img
+          src="https://img.freepik.com/premium-psd/banner-food-menu-restaurant-template-food-menu-restaurant-roast-chicken_609989-567.jpg"
+          alt="Banner 3">
+        <img src="https://th.bing.com/th/id/OIP.ajLuY2Ym0hz3TiNUTEf__gHaEK?rs=1&pid=ImgDetMain" alt="Banner 4">
+        <img src="https://th.bing.com/th/id/R.dace44bce79db7e4cf7f52a3e7641a91?rik=DtjV69DPyKdYHg&pid=ImgRaw&r=0"
+          alt="Banner 5">
+        <!-- Lặp lại -->
+        <img src="https://inan2h.vn/wp-content/uploads/2022/12/in-banner-quang-cao-do-an-6-1.jpg" alt="Banner 1">
+        <img
+          src="https://img.freepik.com/premium-psd/food-menu-restaurant-facebook-cover-banner-template_120329-4873.jpg?semt=ais_hybrid"
+          alt="Banner 2">
+        <img
+          src="https://img.freepik.com/premium-psd/banner-food-menu-restaurant-template-food-menu-restaurant-roast-chicken_609989-567.jpg"
+          alt="Banner 3">
+        <img src="https://th.bing.com/th/id/OIP.ajLuY2Ym0hz3TiNUTEf__gHaEK?rs=1&pid=ImgDetMain" alt="Banner 4">
+        <img src="https://th.bing.com/th/id/R.dace44bce79db7e4cf7f52a3e7641a91?rik=DtjV69DPyKdYHg&pid=ImgRaw&r=0"
+          alt="Banner 5">
+      </div>
+      </div>
+    </section>
+    <section class="categories">
+      <button class="cat-btn active">All</button>
+      <button class="cat-btn">Main course</button>
+      <button class="cat-btn">Beverage</button>
+      <button class="cat-btn">Dessert</button>
+      <button class="cat-btn">Combo</button>
+    </section>
+    <section class="featured">
+      <h2>Featured Categories</h2>
+      <div class="featured-list">
+        <div class="featured-item">
+          <img src="https://static.vinwonders.com/2022/10/banh-mi-phu-quoc-1.jpg" alt="Bánh mì">
+          <span>Bread</span>
+        </div>
+        <div class="featured-item">
+          <img src="https://th.bing.com/th/id/OIP.kCeAp8d3jsaZmu9nk0SowwAAAA?rs=1&pid=ImgDetMain" alt="Cơm tấm">
+          <span>Broken rice</span>
+        </div>
+        <div class="featured-item">
+          <img src="https://toigingiuvedep.vn/wp-content/uploads/2021/06/hinh-anh-tra-sua-tran-chau-dep-mat.jpg"
+            alt="Trà sữa">
+          <span>Milk tea</span>
+        </div>
+        <div class="featured-item">
+          <img src="https://th.bing.com/th/id/OIP.4925IGh0pykOKRzrFvTGEwHaHa?rs=1&pid=ImgDetMain" alt="Pizza">
+          <span>Pizza</span>
+        </div>
+      </div>
+    </section>
+    <section class="food-list" id="food-list">
+      <h2>Delicious Food Suggestions</h2>
+      <div class="foods">
+        <!-- Products will be dynamically loaded here -->
+      </div>
+    </section>
+    <section class="about">
+      <h2>Why choose FoodShop Delivery?</h2>
+      <ul>
+        <li>Super fast delivery in 30 minutes</li>
+        <li>Diverse dishes, reputable restaurants</li>
+        <li>Many attractive offers every day</li>
+        <li>Safe and secure payment</li>
+      </ul>
+    </section>
+  </main>
+  <footer>
+    <div class="footer-main">
+      <div class="footer-cols">
+        <!-- Cột 1: Logo & slogan -->
+        <div class="footer-col footer-col-brand">
+          <img src="logo-grabfood2.svg" alt="FoodX Delivery" class="footer-logo">
+          <div class="footer-slogan">Deliver delicious food to your door, fast and reputable!</div>
+          <div class="footer-apps">
+            <a href="#" target="_blank" aria-label="App Store">
+              <img src="https://upload.wikimedia.org/wikipedia/commons/6/67/App_Store_%28iOS%29.svg" alt="App Store"
+                class="app-icon">
+            </a>
+            <a href="#" target="_blank" aria-label="Google Play">
+              <img src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg"
+                alt="Google Play" class="app-icon">
+            </a>
+          </div>
+        </div>
+        <!-- Cột 2: Liên kết -->
+        <div class="footer-col">
+          <h4>About <span class="brand-green">FoodX</span></h4>
+          <ul>
+            <li><a href="#">Privacy Policy</a></li>
+            <li><a href="#">Terms of Use</a></li>
+            <li><a href="#">Contact</a></li>
+            <li><a href="#">Blog</a></li>
+          </ul>
+        </div>
+        <!-- Cột 3: Kết nối -->
+        <div class="footer-col">
+          <h4>Connect with us</h4>
+          <div class="footer-socials">
+            <a href="https://facebook.com/" target="_blank" title="Facebook" aria-label="Facebook">
+              <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/facebook.svg" alt="Facebook"
+                class="footer-icon">
+            </a>
+            <a href="https://zalo.me/" target="_blank" title="Zalo" aria-label="Zalo">
+              <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/zalo.svg" alt="Zalo"
+                class="footer-icon">
+            </a>
+          </div>
+          <div class="footer-hotline">
+            <span>Hotline:</span> <a href="tel:0123456789">0878 922005</a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>&copy; 2025 FoodShop Delivery. Inspired by Group3Food</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Cart Modal -->
+  <div id="cart-modal" class="modal">
+    <div class="modal-content cart-modal">
+      <span class="close">&times;</span>
+      <h2>Your Cart</h2>
+      <div id="cart-items">
+        <!-- Cart items will be added here dynamically -->
+      </div>
+      <div class="cart-summary">
+        <div class="cart-total">
+          <span>Total:</span>
+          <span id="cart-total-price">$0.00</span>
+        </div>
+        <button id="checkout-btn" class="checkout-btn">Proceed to Checkout</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Order Form Modal -->
+  <div id="order-modal" class="modal">
+    <div class="modal-content order-modal">
+      <span class="close">&times;</span>
+      <h2>Complete Your Order</h2>
+      <form id="order-form">
+        <div class="form-group">
+          <label for="customer-name">Full Name</label>
+          <input type="text" id="customer-name" required placeholder="Enter your full name">
+        </div>
+        <div class="form-group">
+          <label for="customer-phone">Phone Number</label>
+          <input type="tel" id="customer-phone" required placeholder="Enter your phone number">
+        </div>
+        <div class="form-group">
+          <label for="customer-address">Delivery Address</label>
+          <textarea id="customer-address" required placeholder="Enter your delivery address"></textarea>
+        </div>
+        <div class="form-group">
+          <label for="customer-note">Order Notes (Optional)</label>
+          <textarea id="customer-note" placeholder="Any special instructions?"></textarea>
+        </div>
+        <div class="order-summary">
+          <h3>Order Summary</h3>
+          <div id="order-items"></div>
+          <div class="order-total">
+            <span>Total Amount:</span>
+            <span id="order-total-price">$0.00</span>
+          </div>
+        </div>
+        <button type="submit" class="submit-order-btn">Place Order</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Order Tracking Modal -->
+  <div id="tracking-modal" class="modal">
+    <div class="modal-content tracking-modal">
+      <span class="close">&times;</span>
+      <h2>Order Tracking</h2>
+      <div class="tracking-info">
+        <div class="order-number">
+          <span>Order Number:</span>
+          <span id="tracking-order-number"></span>
+        </div>
+        <div class="order-status">
+          <span>Status:</span>
+          <span id="tracking-status" class="status-preparing">Preparing your order</span>
+        </div>
+        <div class="order-details">
+          <h3>Order Details</h3>
+          <div id="tracking-items"></div>
+          <div class="tracking-total">
+            <span>Total Amount:</span>
+            <span id="tracking-total-price">$0.00</span>
+          </div>
+        </div>
+        <div class="delivery-info">
+          <h3>Delivery Information</h3>
+          <p id="tracking-address"></p>
+          <p id="tracking-phone"></p>
+        </div>
+        <div class="estimated-time">
+          <span>Estimated Delivery Time:</span>
+          <span id="tracking-time">30-45 minutes</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Orders History Modal -->
+  <div id="orders-modal" class="modal">
+    <div class="modal-content orders-modal">
+      <span class="close">&times;</span>
+      <h2>Order History</h2>
+      <div id="orders-list">
+        <!-- Orders will be added here dynamically -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Login Modal -->
+  <div id="login-modal" class="modal">
+    <div class="modal-content login-modal">
+      <span class="close">&times;</span>
+      <h2>Login</h2>
+      <form id="login-form">
+        <div class="form-group">
+          <label for="login-username">Username or Email</label>
+          <input type="text" id="login-username" required placeholder="Enter your username or email">
+        </div>
+        <div class="form-group">
+          <label for="login-password">Password</label>
+          <input type="password" id="login-password" required placeholder="Enter your password">
+        </div>
+        <button type="submit" class="modal-btn">Login</button>
+        <p>Don't have an account? <a href="#" id="show-register">Register</a></p>
+      </form>
+    </div>
+  </div>
+
+  <!-- Register Modal -->
+  <div id="register-modal" class="modal">
+    <div class="modal-content register-modal">
+      <span class="close">&times;</span>
+      <h2>Register</h2>
+      <form id="register-form">
+        <div class="form-group">
+          <label for="register-username">Username</label>
+          <input type="text" id="register-username" required placeholder="Choose a username">
+        </div>
+        <div class="form-group">
+          <label for="register-email">Email</label>
+          <input type="email" id="register-email" required placeholder="Enter your email">
+        </div>
+        <div class="form-group">
+          <label for="register-password">Password</label>
+          <input type="password" id="register-password" required placeholder="Create a password">
+        </div>
+        <button type="submit" class="modal-btn">Register</button>
+        <p>Already have an account? <a href="#" id="show-login">Login</a></p>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+
+      let allProducts = [];
+      const foodContainer = document.querySelector('.foods');
+
+      function initializeProducts() {
+        const productsFromStorage = localStorage.getItem('products');
+        const storedVersion = localStorage.getItem('product_version');
+
+        // Force refresh if version mismatch or no products stored
+        if (!productsFromStorage || storedVersion !== PRODUCT_DATA_VERSION) {
+          allProducts = getDefaultProducts();
+          localStorage.setItem('products', JSON.stringify(allProducts));
+          localStorage.setItem('product_version', PRODUCT_DATA_VERSION);
+        } else {
+          allProducts = JSON.parse(productsFromStorage);
+        }
+      }
+
+      function renderProducts(products) {
+        foodContainer.innerHTML = products.map(p => {
+          const oldPriceHtml = p.oldPrice ? `<span class="old-price">$${p.oldPrice.toFixed(2)}</span>` : '';
+          const discountBadgeHtml = p.discount ? `<div class="discount-badge">-${p.discount}%</div>` : '';
+          const newBadgeHtml = p.isNew ? `<span class="new-badge">New</span>` : '';
+
+          return `
+            <div class="food-card" data-id="${p.id}" data-category="${p.category}">
+              <div class="food-card-image-container">
+                <img class="food-card-image" src="${p.img}" alt="${p.name}">
+              </div>
+              <div class="food-card-content">
+                <h3>${p.name}</h3>
+                <div class="rating">⭐ ${p.rating} | ${p.sold}+ sold</div>
+                <p class="desc">${p.desc}</p>
+                <div class="price-line">
+                    <p class="price">$${p.price.toFixed(2)}</p>
+                    ${oldPriceHtml}
+                </div>
+                <button class="add-cart">Add to cart</button>
+              </div>
+              ${discountBadgeHtml}
+              ${newBadgeHtml}
+            </div>
+          `;
+        }).join('');
+
+        // Re-attach event listeners for "Add to cart" buttons
+        attachAddToCartListeners();
+      }
+
+      function attachAddToCartListeners() {
+        document.querySelectorAll('.add-cart').forEach(button => {
+          button.addEventListener('click', (e) => {
+            const loggedInUser = localStorage.getItem('loggedInUser');
+            if (!loggedInUser) {
+              alert('Bạn cần đăng nhập để thêm sản phẩm vào giỏ hàng.');
+              window.location.href = 'login.html';
+              return;
+            }
+
+            const card = e.target.closest('.food-card');
+            const id = card.dataset.id;
+            const product = allProducts.find(p => p.id == id);
+
+            const item = {
+              name: product.name,
+              price: product.price,
+              quantity: 1,
+              image: product.img
+            };
+
+            // Check if item already exists in cart
+            const existingItem = cart.find(cartItem => cartItem.name === item.name);
+            if (existingItem) {
+              existingItem.quantity++;
+            } else {
+              cart.push(item);
+            }
+
+            updateCart();
+            showNotification('Item added to cart!');
+          });
+        });
+      }
+
+    // Cart functionality
+    let cart = [];
+    const cartModal = document.getElementById('cart-modal');
+    const cartLink = document.getElementById('cart-link');
+    const cartItems = document.getElementById('cart-items');
+    const cartTotalPrice = document.getElementById('cart-total-price');
+    const cartCount = document.querySelector('.cart-count');
+    const closeBtn = document.querySelector('.close');
+    const checkoutBtn = document.getElementById('checkout-btn');
+
+    // Update cart display
+    function updateCart() {
+      // Update cart count
+      const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+      cartCount.textContent = totalItems;
+
+      // Update cart items display
+      cartItems.innerHTML = cart.map(item => `
+        <div class="cart-item">
+          <img src="${item.image}" alt="${item.name}">
+          <div class="cart-item-details">
+            <h4>${item.name}</h4>
+            <div class="cart-item-price">$${item.price.toFixed(2)} x ${item.quantity}</div>
+          </div>
+          <div class="cart-item-actions">
+            <button class="quantity-btn minus" data-name="${item.name}">-</button>
+            <span class="quantity">${item.quantity}</span>
+            <button class="quantity-btn plus" data-name="${item.name}">+</button>
+            <button class="remove-btn" data-name="${item.name}">×</button>
+          </div>
+        </div>
+      `).join('');
+
+      // Update total price
+      const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+      cartTotalPrice.textContent = `$${total.toFixed(2)}`;
+
+      // Add event listeners to quantity buttons
+      document.querySelectorAll('.quantity-btn').forEach(button => {
+        button.addEventListener('click', function() {
+          const itemName = this.dataset.name;
+          const item = cart.find(item => item.name === itemName);
+          
+          if (this.classList.contains('plus')) {
+            item.quantity++;
+          } else if (this.classList.contains('minus')) {
+            item.quantity--;
+            if (item.quantity <= 0) {
+              cart = cart.filter(cartItem => cartItem.name !== itemName);
+            }
+          }
+          
+          updateCart();
+        });
+      });
+
+      // Add event listeners to remove buttons
+      document.querySelectorAll('.remove-btn').forEach(button => {
+        button.addEventListener('click', function() {
+          const itemName = this.dataset.name;
+          cart = cart.filter(item => item.name !== itemName);
+          updateCart();
+        });
+      });
+    }
+
+    // Show notification
+    function showNotification(message) {
+      const notification = document.createElement('div');
+      notification.className = 'notification';
+      notification.textContent = message;
+      document.body.appendChild(notification);
+
+      setTimeout(() => {
+        notification.remove();
+      }, 2000);
+    }
+
+    // Modal functionality
+    cartLink.addEventListener('click', function(e) {
+      e.preventDefault();
+      cartModal.style.display = 'flex';
+    });
+
+    closeBtn.addEventListener('click', function() {
+      cartModal.style.display = 'none';
+    });
+
+    window.addEventListener('click', function(e) {
+      if (e.target === cartModal) {
+        cartModal.style.display = 'none';
+      }
+    });
+
+    // Order functionality
+    const orderModal = document.getElementById('order-modal');
+    const trackingModal = document.getElementById('tracking-modal');
+    const orderForm = document.getElementById('order-form');
+    let currentOrder = null;
+
+    // Update checkout button to show order form
+    checkoutBtn.addEventListener('click', function() {
+      if (cart.length === 0) {
+        showNotification('Your cart is empty!');
+        return;
+      }
+      cartModal.style.display = 'none';
+      showOrderForm();
+    });
+
+    function showOrderForm() {
+      // Update order summary
+      const orderItems = document.getElementById('order-items');
+      const orderTotalPrice = document.getElementById('order-total-price');
+      
+      orderItems.innerHTML = cart.map(item => `
+        <div class="order-item">
+          <span>${item.name} x ${item.quantity}</span>
+          <span>$${(item.price * item.quantity).toFixed(2)}</span>
+        </div>
+      `).join('');
+
+      const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+      orderTotalPrice.textContent = `$${total.toFixed(2)}`;
+
+      orderModal.style.display = 'flex';
+    }
+
+    // Handle order form submission
+    orderForm.addEventListener('submit', function(e) {
+      e.preventDefault();
+      
+      const orderData = {
+        orderNumber: generateOrderNumber(),
+        customerName: document.getElementById('customer-name').value,
+        customerPhone: document.getElementById('customer-phone').value,
+        customerAddress: document.getElementById('customer-address').value,
+        customerNote: document.getElementById('customer-note').value,
+        items: [...cart],
+        total: cart.reduce((sum, item) => sum + (item.price * item.quantity), 0),
+        status: 'preparing',
+        orderTime: new Date().toISOString()
+      };
+
+      // Store order in localStorage
+      const orders = JSON.parse(localStorage.getItem('orders') || '[]');
+      orders.push(orderData);
+      localStorage.setItem('orders', JSON.stringify(orders));
+
+      // Clear cart
+      cart = [];
+      updateCart();
+      
+      // Show success message
+      showNotification('Order placed successfully!');
+      
+      // Close order form
+      orderModal.style.display = 'none';
+      
+      // Show tracking modal
+      showTrackingModal(orderData);
+    });
+
+    function generateOrderNumber() {
+      return 'ORD' + Date.now().toString().slice(-6);
+    }
+
+    function showTrackingModal(order) {
+      currentOrder = order;
+      
+      // Update tracking information
+      document.getElementById('tracking-order-number').textContent = order.orderNumber;
+      document.getElementById('tracking-status').textContent = 'Preparing your order';
+      document.getElementById('tracking-address').textContent = order.customerAddress;
+      document.getElementById('tracking-phone').textContent = order.customerPhone;
+      document.getElementById('tracking-total-price').textContent = `$${order.total.toFixed(2)}`;
+
+      // Update tracking items
+      const trackingItems = document.getElementById('tracking-items');
+      trackingItems.innerHTML = order.items.map(item => `
+        <div class="tracking-item">
+          <span>${item.name} x ${item.quantity}</span>
+          <span>$${(item.price * item.quantity).toFixed(2)}</span>
+        </div>
+      `).join('');
+
+      trackingModal.style.display = 'flex';
+    }
+
+    // Add close functionality for new modals
+    document.querySelectorAll('.modal .close').forEach(closeBtn => {
+      closeBtn.addEventListener('click', function() {
+        this.closest('.modal').style.display = 'none';
+      });
+    });
+
+    // Close modals when clicking outside
+    window.addEventListener('click', function(e) {
+      if (e.target.classList.contains('modal')) {
+        e.target.style.display = 'none';
+      }
+    });
+
+    // Orders History functionality
+    const ordersModal = document.getElementById('orders-modal');
+    const ordersLink = document.getElementById('orders-link');
+    const ordersList = document.getElementById('orders-list');
+
+    // Clear any existing orders in localStorage
+    localStorage.removeItem('orders');
+
+    ordersLink.addEventListener('click', function(e) {
+      e.preventDefault();
+      showOrdersHistory();
+    });
+
+    function showOrdersHistory() {
+      const orders = JSON.parse(localStorage.getItem('orders') || '[]');
+      
+      if (orders.length === 0) {
+        ordersList.innerHTML = `
+          <div class="no-orders">
+            <p>You haven't placed any orders yet.</p>
+            <p class="no-orders-sub">Your order history will appear here after you place an order.</p>
+          </div>
+        `;
+      } else {
+        // Sort orders by date (newest first)
+        orders.sort((a, b) => new Date(b.orderTime) - new Date(a.orderTime));
+        
+        ordersList.innerHTML = orders.map(order => `
+          <div class="order-history-item">
+            <div class="order-history-header">
+              <div class="order-history-info">
+                <span class="order-number">Order #${order.orderNumber}</span>
+                <span class="order-date">${formatDate(order.orderTime)}</span>
+              </div>
+              <span class="order-status ${getStatusClass(order.status)}">${formatStatus(order.status)}</span>
+            </div>
+            <div class="order-history-details">
+              <div class="order-items">
+                ${order.items.map(item => `
+                  <div class="order-history-item-detail">
+                    <span>${item.name} x ${item.quantity}</span>
+                    <span>$${(item.price * item.quantity).toFixed(2)}</span>
+                  </div>
+                `).join('')}
+              </div>
+              <div class="order-total">
+                <span>Total:</span>
+                <span>$${order.total.toFixed(2)}</span>
+              </div>
+              <div class="order-address">
+                <p><strong>Delivery Address:</strong> ${order.customerAddress}</p>
+                <p><strong>Phone:</strong> ${order.customerPhone}</p>
+              </div>
+            </div>
+          </div>
+        `).join('');
+      }
+
+      ordersModal.style.display = 'flex';
+    }
+
+    function formatDate(dateString) {
+      const date = new Date(dateString);
+      return date.toLocaleString('en-US', {
+        year: 'numeric',
+        month: 'short',
+        day: 'numeric',
+        hour: '2-digit',
+        minute: '2-digit'
+      });
+    }
+
+    function formatStatus(status) {
+      const statusMap = {
+        'preparing': 'Preparing',
+        'cooking': 'Cooking',
+        'delivering': 'On the way',
+        'delivered': 'Delivered'
+      };
+      return statusMap[status] || status;
+    }
+
+    function getStatusClass(status) {
+      const classMap = {
+        'preparing': 'status-preparing',
+        'cooking': 'status-cooking',
+        'delivering': 'status-delivering',
+        'delivered': 'status-delivered'
+      };
+      return classMap[status] || 'status-preparing';
+    }
+
+    // Login/Register modal functionality
+    const loginModal = document.getElementById('login-modal');
+    const registerModal = document.getElementById('register-modal');
+    const loginLink = document.getElementById('login-menu');
+    const registerLink = document.getElementById('register-menu');
+    const showRegister = document.getElementById('show-register');
+    const showLogin = document.getElementById('show-login');
+    const userMenu = document.querySelector('.user-menu');
+    const logoutMenu = document.getElementById('logout-menu');
+    const usernameSpan = document.querySelector('.username');
+    let currentUser = JSON.parse(localStorage.getItem('currentUser') || 'null');
+
+    // Check if user is already logged in on page load
+    if (currentUser) {
+      loginUser(currentUser.username);
+    }
+
+    // Open login modal
+    loginLink.addEventListener('click', function(e) {
+      e.preventDefault();
+      window.location.href = 'login.html';
+    });
+    // Open register modal
+    registerLink.addEventListener('click', function(e) {
+      e.preventDefault();
+      window.location.href = 'register.html';
+    });
+    
+    // Handle logout
+    logoutMenu.addEventListener('click', function(e) {
+      e.preventDefault();
+      logoutUser();
+      showNotification('Logged out successfully!');
+    });
+    
+    // Function to show user menu and hide login/register
+    function loginUser(username) {
+      loginLink.style.display = 'none';
+      registerLink.style.display = 'none';
+      userMenu.style.display = 'flex';
+      usernameSpan.textContent = username;
+    }
+    
+    // Function to show login/register and hide user menu
+    function logoutUser() {
+      localStorage.removeItem('currentUser');
+      currentUser = null;
+      loginLink.style.display = 'inline';
+      registerLink.style.display = 'inline';
+      userMenu.style.display = 'none';
+    }
+    // Switch to register modal from login
+    if (showRegister) {
+      showRegister.addEventListener('click', function(e) {
+        e.preventDefault();
+        loginModal.style.display = 'none';
+        registerModal.style.display = 'flex';
+      });
+    }
+    // Switch to login modal from register
+    if (showLogin) {
+      showLogin.addEventListener('click', function(e) {
+        e.preventDefault();
+        registerModal.style.display = 'none';
+        loginModal.style.display = 'flex';
+      });
+    }
+    // Close modals when click X
+    document.querySelectorAll('#login-modal .close, #register-modal .close').forEach(btn => {
+      btn.addEventListener('click', function() {
+        loginModal.style.display = 'none';
+        registerModal.style.display = 'none';
+      });
+    });
+    // Close modals when click outside
+    window.addEventListener('click', function(e) {
+      if (e.target === loginModal) loginModal.style.display = 'none';
+      if (e.target === registerModal) registerModal.style.display = 'none';
+    });
+
+    // Category filter functionality
+    const categoryButtons = document.querySelectorAll('.cat-btn');
+
+    function filterProducts(category, keyword = '') {
+      const foodCards = document.querySelectorAll('.food-card');
+      foodCards.forEach(card => {
+        const cardCategory = card.dataset.category;
+        const cardName = card.querySelector('h3').textContent;
+        
+        const categoryMatch = (category === 'All' || cardCategory === category);
+        const keywordMatch = (keyword === '' || cardName.toLowerCase().includes(keyword.toLowerCase()));
+
+        if (categoryMatch && keywordMatch) {
+          card.style.display = '';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    }
+
+    categoryButtons.forEach(btn => {
+      btn.addEventListener('click', function() {
+        categoryButtons.forEach(b => b.classList.remove('active'));
+        this.classList.add('active');
+        const category = this.textContent.trim();
+        filterProducts(category);
+      });
+    });
+
+    // Featured category filter functionality
+    const featuredItems = document.querySelectorAll('.featured-item');
+    const featuredMap = {
+      'Bread': { category: 'Main course', keyword: 'Bánh Mì' },
+      'Broken rice': { category: 'Main course', keyword: 'Cơm Tấm' },
+      'Milk tea': { category: 'Beverage', keyword: 'Trà Sữa' },
+      'Pizza': { category: 'Main course', keyword: 'Pizza' },
+    };
+
+    featuredItems.forEach(item => {
+      item.addEventListener('click', function() {
+        const featuredName = this.querySelector('span').textContent.trim();
+        const filterOptions = featuredMap[featuredName];
+
+        if (filterOptions) {
+          // Highlight the correct main category button
+          categoryButtons.forEach(b => {
+            if (b.textContent.trim() === filterOptions.category) {
+              b.classList.add('active');
+            } else {
+              b.classList.remove('active');
+            }
+          });
+
+          // Filter the products
+          filterProducts(filterOptions.category, filterOptions.keyword);
+
+          // Scroll to the food list
+          document.getElementById('food-list').scrollIntoView({ behavior: 'smooth' });
+        }
+      });
+    });
+
+    // Initial Load
+    initializeProducts();
+    renderProducts(allProducts);
+
+    });
+  </script>
+</body>
+
+</html>

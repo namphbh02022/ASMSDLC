@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login - FoodX Delivery</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    body {
+      background: linear-gradient(135deg, #00b14f 0%, #00a046 100%);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Segoe UI', Arial, sans-serif;
+    }
+
+    .login-container {
+      background: #fff;
+      border-radius: 20px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+      padding: 40px;
+      width: 100%;
+      max-width: 400px;
+      margin: 20px;
+    }
+
+    .login-header {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    .login-header h1 {
+      color: #00b14f;
+      font-size: 28px;
+      margin-bottom: 10px;
+    }
+
+    .login-header p {
+      color: #666;
+      font-size: 16px;
+    }
+
+    .login-form {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .form-group label {
+      font-weight: 600;
+      color: #333;
+      font-size: 14px;
+    }
+
+    .form-group input {
+      padding: 12px 16px;
+      border: 2px solid #e0e0e0;
+      border-radius: 8px;
+      font-size: 16px;
+      transition: all 0.3s ease;
+    }
+
+    .form-group input:focus {
+      border-color: #00b14f;
+      outline: none;
+      box-shadow: 0 0 0 3px rgba(0, 177, 79, 0.1);
+    }
+
+    .login-btn {
+      background: #00b14f;
+      color: #fff;
+      border: none;
+      padding: 14px;
+      border-radius: 8px;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      margin-top: 10px;
+    }
+
+    .login-btn:hover {
+      background: #008f3a;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(0, 177, 79, 0.2);
+    }
+
+    .register-link {
+      text-align: center;
+      margin-top: 20px;
+      color: #666;
+    }
+
+    .register-link a {
+      color: #00b14f;
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    .register-link a:hover {
+      text-decoration: underline;
+    }
+
+    .notification {
+      position: fixed;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      padding: 8px 18px;
+      border-radius: 0 0 8px 8px;
+      font-weight: 500;
+      z-index: 1000;
+      animation: slideIn 0.3s ease;
+      margin-top: 0;
+      min-width: 180px;
+      max-width: 350px;
+      text-align: center;
+      max-height: 60px;
+      overflow: auto;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .notification.success {
+      background: #00b14f;
+      color: #fff;
+    }
+
+    .notification.error {
+      background: #ff4757;
+      color: #fff;
+    }
+
+    @keyframes slideIn {
+      from {
+        transform: translateX(100%);
+        opacity: 0;
+      }
+      to {
+        transform: translateX(0);
+        opacity: 1;
+      }
+    }
+
+    .back-btn {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      background: rgba(255, 255, 255, 0.2);
+      color: #fff;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 25px;
+      cursor: pointer;
+      font-weight: 600;
+      transition: all 0.3s ease;
+    }
+
+    .back-btn:hover {
+      background: rgba(255, 255, 255, 0.3);
+    }
+  </style>
+</head>
+
+<body>
+  <button class="back-btn" onclick="window.location.href='index.html'">← Back to Home</button>
+  
+  <div class="login-container">
+    <div class="login-header">
+      <h1>Welcome Back</h1>
+      <p>Login to your FoodX Delivery account</p>
+    </div>
+    
+    <form class="login-form" id="login-form">
+      <div class="form-group">
+        <label for="username">Username or Email</label>
+        <input type="text" id="username" required placeholder="Enter your username or email">
+      </div>
+      
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input type="password" id="password" required placeholder="Enter your password">
+      </div>
+      
+      <button type="submit" class="login-btn">Login</button>
+    </form>
+    
+    <div class="register-link">
+      Don't have an account? <a href="register.html">Register here</a>
+    </div>
+  </div>
+
+  <script>
+    // Get form elements
+    const loginForm = document.getElementById('login-form');
+    
+    // Handle form submission
+    loginForm.addEventListener('submit', function(e) {
+      e.preventDefault();
+      
+      // Get form data
+      const usernameOrEmail = document.getElementById('username').value.trim();
+      const password = document.getElementById('password').value;
+      
+      // Validation
+      if (!usernameOrEmail || !password) {
+        showNotification('Please fill in all fields!', 'error');
+        return;
+      }
+      
+      // Get users from localStorage
+      const users = JSON.parse(localStorage.getItem('users') || '[]');
+      
+      // Find user by username or email
+      const user = users.find(u => 
+        (u.username === usernameOrEmail || u.email === usernameOrEmail) && 
+        u.password === password
+      );
+      
+      // Admin redirect
+      if (usernameOrEmail === 'admin' && password === 'admin123') {
+        showNotification('Admin login successful! Redirecting...', 'success');
+        setTimeout(() => {
+          window.location.href = 'admin.html';
+        }, 1500);
+        return;
+      }
+
+      if (user) {
+        // Login successful
+        showNotification('Login successful!', 'success');
+        
+        // Store current user session
+        localStorage.setItem('currentUser', JSON.stringify({
+          id: user.id,
+          username: user.username,
+          fullname: user.fullname,
+          email: user.email,
+          phone: user.phone,
+          loginTime: new Date().toISOString()
+        }));
+        
+        // Reset form
+        loginForm.reset();
+        
+        // Redirect to home page after 2 seconds
+        setTimeout(() => {
+          window.location.href = 'index.html';
+        }, 2000);
+      } else {
+        // Login failed
+        showNotification('Invalid username/email or password!', 'error');
+      }
+    });
+    
+    // Show notification function
+    function showNotification(message, type) {
+      // Remove existing notifications
+      const existingNotifications = document.querySelectorAll('.notification');
+      existingNotifications.forEach(notification => notification.remove());
+      
+      // Create new notification
+      const notification = document.createElement('div');
+      notification.className = `notification ${type}`;
+      notification.textContent = message;
+      document.body.appendChild(notification);
+      
+      // Remove notification after 3 seconds
+      setTimeout(() => {
+        notification.remove();
+      }, 3000);
+    }
+  </script>
+</body>
+
+</html> 

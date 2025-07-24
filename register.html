@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Register - FoodX Delivery</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    body {
+      background: linear-gradient(135deg, #00b14f 0%, #00a046 100%);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Segoe UI', Arial, sans-serif;
+    }
+
+    .register-container {
+      background: #fff;
+      border-radius: 20px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+      padding: 40px;
+      width: 100%;
+      max-width: 500px;
+      margin: 20px;
+    }
+
+    .register-header {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    .register-header h1 {
+      color: #00b14f;
+      font-size: 28px;
+      margin-bottom: 10px;
+    }
+
+    .register-header p {
+      color: #666;
+      font-size: 16px;
+    }
+
+    .register-form {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .form-group label {
+      font-weight: 600;
+      color: #333;
+      font-size: 14px;
+    }
+
+    .form-group input {
+      padding: 12px 16px;
+      border: 2px solid #e0e0e0;
+      border-radius: 8px;
+      font-size: 16px;
+      transition: all 0.3s ease;
+    }
+
+    .form-group input:focus {
+      border-color: #00b14f;
+      outline: none;
+      box-shadow: 0 0 0 3px rgba(0, 177, 79, 0.1);
+    }
+
+    .register-btn {
+      background: #00b14f;
+      color: #fff;
+      border: none;
+      padding: 14px;
+      border-radius: 8px;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      margin-top: 10px;
+    }
+
+    .register-btn:hover {
+      background: #008f3a;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(0, 177, 79, 0.2);
+    }
+
+    .login-link {
+      text-align: center;
+      margin-top: 20px;
+      color: #666;
+    }
+
+    .login-link a {
+      color: #00b14f;
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    .login-link a:hover {
+      text-decoration: underline;
+    }
+
+    .notification {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      padding: 12px 24px;
+      border-radius: 8px;
+      font-weight: 500;
+      z-index: 1000;
+      animation: slideIn 0.3s ease;
+    }
+
+    .notification.success {
+      background: #00b14f;
+      color: #fff;
+    }
+
+    .notification.error {
+      background: #ff4757;
+      color: #fff;
+    }
+
+    @keyframes slideIn {
+      from {
+        transform: translateX(100%);
+        opacity: 0;
+      }
+      to {
+        transform: translateX(0);
+        opacity: 1;
+      }
+    }
+
+    .back-btn {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      background: rgba(255, 255, 255, 0.2);
+      color: #fff;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 25px;
+      cursor: pointer;
+      font-weight: 600;
+      transition: all 0.3s ease;
+    }
+
+    .back-btn:hover {
+      background: rgba(255, 255, 255, 0.3);
+    }
+  </style>
+</head>
+
+<body>
+  <button class="back-btn" onclick="window.location.href='index.html'">← Back to Home</button>
+  
+  <div class="register-container">
+    <div class="register-header">
+      <h1>Create Account</h1>
+      <p>Join FoodX Delivery and enjoy delicious food delivered to your door</p>
+    </div>
+    
+    <form class="register-form" id="register-form">
+      <div class="form-group">
+        <label for="fullname">Full Name</label>
+        <input type="text" id="fullname" required placeholder="Enter your full name">
+      </div>
+      
+      <div class="form-group">
+        <label for="username">Username</label>
+        <input type="text" id="username" required placeholder="Choose a username">
+      </div>
+      
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input type="email" id="email" required placeholder="Enter your email">
+      </div>
+      
+      <div class="form-group">
+        <label for="phone">Phone Number</label>
+        <input type="tel" id="phone" required placeholder="Enter your phone number">
+      </div>
+      
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input type="password" id="password" required placeholder="Create a password">
+      </div>
+      
+      <div class="form-group">
+        <label for="confirm-password">Confirm Password</label>
+        <input type="password" id="confirm-password" required placeholder="Confirm your password">
+      </div>
+      
+      <button type="submit" class="register-btn">Create Account</button>
+    </form>
+    
+    <div class="login-link">
+      Already have an account? <a href="login.html">Login here</a>
+    </div>
+  </div>
+
+  <script>
+    // Get form elements
+    const registerForm = document.getElementById('register-form');
+    
+    // Handle form submission
+    registerForm.addEventListener('submit', function(e) {
+      e.preventDefault();
+      
+      // Get form data
+      const fullname = document.getElementById('fullname').value.trim();
+      const username = document.getElementById('username').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const phone = document.getElementById('phone').value.trim();
+      const password = document.getElementById('password').value;
+      const confirmPassword = document.getElementById('confirm-password').value;
+      
+      // Validation
+      if (!fullname || !username || !email || !phone || !password || !confirmPassword) {
+        showNotification('Please fill in all fields!', 'error');
+        return;
+      }
+      
+      if (password !== confirmPassword) {
+        showNotification('Passwords do not match!', 'error');
+        return;
+      }
+      
+      if (password.length < 6) {
+        showNotification('Password must be at least 6 characters!', 'error');
+        return;
+      }
+      
+      // Check if username already exists
+      const existingUsers = JSON.parse(localStorage.getItem('users') || '[]');
+      const userExists = existingUsers.find(user => user.username === username);
+      
+      if (userExists) {
+        showNotification('Username already exists!', 'error');
+        return;
+      }
+      
+      // Check if email already exists
+      const emailExists = existingUsers.find(user => user.email === email);
+      if (emailExists) {
+        showNotification('Email already registered!', 'error');
+        return;
+      }
+      
+      // Create new user
+      const newUser = {
+        id: Date.now(),
+        fullname: fullname,
+        username: username,
+        email: email,
+        phone: phone,
+        password: password, // In real app, this should be hashed
+        createdAt: new Date().toISOString()
+      };
+      
+      // Save to localStorage
+      existingUsers.push(newUser);
+      localStorage.setItem('users', JSON.stringify(existingUsers));
+      
+      // Show success message
+      showNotification('Account created successfully!', 'success');
+      
+      // Reset form
+      registerForm.reset();
+      
+      // Redirect to login page after 2 seconds
+      setTimeout(() => {
+        window.location.href = 'login.html';
+      }, 2000);
+    });
+    
+    // Show notification function
+    function showNotification(message, type) {
+      // Remove existing notifications
+      const existingNotifications = document.querySelectorAll('.notification');
+      existingNotifications.forEach(notification => notification.remove());
+      
+      // Create new notification
+      const notification = document.createElement('div');
+      notification.className = `notification ${type}`;
+      notification.textContent = message;
+      document.body.appendChild(notification);
+      
+      // Remove notification after 3 seconds
+      setTimeout(() => {
+        notification.remove();
+      }, 3000);
+    }
+  </script>
+</body>
+
+</html> 
